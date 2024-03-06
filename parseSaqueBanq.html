@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Saque Bancário</title>
+</head>
+<body>
+    <script> 
+        let num1 = window.prompt("Deseja acessar a sua conta bancária?");
+            alert(num1);
+        let num2 = 2500;
+        let cpf = window.prompt("Digite seu CPF:");
+        alert("Acessando conta pertencente ao CPF: " +cpf);
+        alert("Saldo disponivel: "+num2)
+    </script>
+    <form>
+        <p> Saldo atual: <input type="text" id="saldo" readonly value="2500">  </p>
+        <p> Valor do saque: <input type="text" id="valorSaque"> </p>
+        <button type="button" onclick="obterDados()"> Sacar </button>
+        <p> Saque: <input type="text" id="final" readonly placeholder="Saída"> </p>
+    </form> 
+    <script>
+        function obterDados() {
+            let saldo = document.getElementById("saldo").value; 
+            let saque = document.getElementById("valorSaque").value;
+
+            if(saque < saldo){
+                let conf = window.prompt("Deseja continuar?");
+                alert(conf);
+                let operacao = parseFloat(saldo) - parseFloat(saque);
+                document.getElementById("saldo").value = operacao;
+                document.getElementById("saldo").style.color = "blue";
+                document.getElementById("final").value = saque;
+                document.getElementById("final").style.color = "blue";
+            }else if(saldo < saque){
+            alert("Saque insuficiente!");
+            }
+        }
+    </script>
+</body>
+</html>
